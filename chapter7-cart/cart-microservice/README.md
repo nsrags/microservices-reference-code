@@ -36,7 +36,18 @@ If you want to build an _über-jar_, execute the following command:
 
 The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
 
+### Pre-requisties 
+- Java 21
+- RDBMC - PostgresQL running as container or in your local (make sure you have the credentials in order to configure the application)
+- Maven build tool
+- Docker daemon running to build container images
+  
+
 ### Setup 
+- Import the project to your favourite IDE
+- Since this project uses build tool Maven you can import it as Maven project. No special instructions
+- Once imported and dependencies are downloaded project should build successfully
+  
 
 
 Easily start your REST Web Services
