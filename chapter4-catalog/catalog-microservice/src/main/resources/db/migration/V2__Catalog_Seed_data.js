@@ -1,0 +1,39 @@
+// Need to add parent Category as Root Category in all Child categories
+db.categories.insertMany([
+{
+    name:"ReviveStyle",
+    categoryId:"cat10000",
+    description:"ReviveStyle - Root Category",
+    isActive:true,
+    rootCategory:true
+    },
+    {
+     name:"Men's",
+    categoryId:"cat10001",
+     description:"Men's",
+     isActive:true,
+     rootCategory:false
+    },
+    {
+    name:"Women's",
+    categoryId:"cat10002",
+    description:"Women's",
+    isActive:true,
+    rootCategory:false
+    },
+    {
+    name:"Apparels",
+    categoryId:"cat10003",
+    description:"Apparels",
+    isActive:true,
+    rootCategory:false
+    },
+    {
+     name:"Accessories",
+     categoryId:"cat10004",
+     description:"Accessories",
+     isActive:true,
+     rootCategory:false
+    }
+     ]
+    );
