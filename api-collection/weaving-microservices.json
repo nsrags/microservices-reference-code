@@ -1,0 +1,342 @@
+{
+  "name": "weaving-microservices",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "chapter7-cart",
+      "items": [
+        {
+          "type": "http",
+          "name": "findCartByCartId",
+          "seq": 1,
+          "request": {
+            "url": "http://{{CART_HOST}}:{{CART_HOST_PORT}}/{{CART_CONTEXT_PATH}}/:cartId",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "cartId",
+                "value": "4",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "getCartByCustomer",
+          "seq": 2,
+          "request": {
+            "url": "http://{{CART_HOST}}:{{CART_HOST_PORT}}/{{CART_CONTEXT_PATH}}/customer/:customerId",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "343",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "CreateNewCartForCustomer",
+          "seq": 3,
+          "request": {
+            "url": "http://{{CART_HOST}}:{{CART_HOST_PORT}}/{{CART_CONTEXT_PATH}}/customer/:customerId",
+            "method": "POST",
+            "headers": [],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "343",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Add Items to Cart",
+          "seq": 4,
+          "request": {
+            "url": "http://{{CART_HOST}}:{{CART_HOST_PORT}}/{{CART_CONTEXT_PATH}}/:cartId/items",
+            "method": "POST",
+            "headers": [],
+            "params": [
+              {
+                "name": "cartId",
+                "value": "4",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "[{\n  \"quantity\":4,\n  \"skuId\":\"sku1100\",\n  \"productId\":\"prod1000\",\n  \"salePrice\":10.00,\n  \"listPrice\":12.00,\n  \"productName\":\"Men's Tie\"\n},\n {\n  \"quantity\":5,\n  \"skuId\":\"sku1101\",\n  \"productId\":\"prod1001\",\n  \"salePrice\":13.00,\n  \"listPrice\":15.00,\n  \"productName\":\"Men's Scarf\"\n},\n {\n  \"quantity\":6,\n  \"skuId\":\"sku1102\",\n  \"productId\":\"prod1002\",\n  \"salePrice\":15.00,\n  \"listPrice\":20.00,\n  \"productName\":\"Men's Scarf\"\n}\n]",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "AddItemToCart",
+          "seq": 5,
+          "request": {
+            "url": "http://{{CART_HOST}}:{{CART_HOST_PORT}}/{{CART_CONTEXT_PATH}}/:cartId/item",
+            "method": "POST",
+            "headers": [],
+            "params": [
+              {
+                "name": "cartId",
+                "value": "4",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"quantity\":4,\n  \"skuId\":\"sku1100\",\n  \"productId\":\"prod1000\",\n  \"salePrice\":10.00,\n  \"listPrice\":12.00,\n  \"productName\":\"Men's Tie\"\n}\n",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "chapter4-catalog",
+      "items": [
+        {
+          "type": "http",
+          "name": "FindCategoryById",
+          "seq": 1,
+          "request": {
+            "url": "http://{{CATALOG_HOST}}:{{CATALOG_HOST_PORT}}/{{CATALOG_CONTEXT_PATH}}/category/:categoryId",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "categoryId",
+                "value": "68e0f717e7c938ce21772078",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "FindProductsByCategory",
+          "seq": 2,
+          "request": {
+            "url": "http://{{CATALOG_HOST}}:{{CATALOG_HOST_PORT}}/{{CATALOG_CONTEXT_PATH}}/products/:parentCategory",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "parentCategory",
+                "value": "cat10002",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "FindChildSkus",
+          "seq": 3,
+          "request": {
+            "url": "http://{{CATALOG_HOST}}:{{CART_HOST_PORT}}/{{CATALOG_CONTEXT_PATH}}/skus/:productId",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "productId",
+                "value": "68e0f719e7c938ce21772081",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "GetActiveCategories",
+          "seq": 4,
+          "request": {
+            "url": "http://{{CATALOG_HOST}}:{{CATALOG_HOST_PORT}}/{{CATALOG_CONTEXT_PATH}}/categories/all",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "activeEnvironmentUid": "psjfszhmBxYMlrq8NJqRw",
+  "environments": [
+    {
+      "variables": [
+        {
+          "name": "CART_HOST",
+          "value": "localhost",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "CART_HOST_PORT",
+          "value": "8080",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "CART_CONTEXT_PATH",
+          "value": "cart",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "CATALOG_HOST",
+          "value": "localhost",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "CATALOG_HOST_PORT",
+          "value": "8080",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "CATALOG_CONTEXT_PATH",
+          "value": "catalog",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "weaving-microservices"
+    }
+  ],
+  "brunoConfig": {
+    "version": "1",
+    "name": "weaving-microservices",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
