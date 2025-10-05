@@ -48,8 +48,19 @@ The application, packaged as an _über-jar_, is now runnable using `java -jar ta
 - Since this project uses build tool Maven you can import it as Maven project. No special instructions
 - Once imported and dependencies are downloaded project should build successfully
   
+### How to Run the application 
+
+Run the Database Migration using Flyway (Make sure the required database already exists and database credentials are correct) 
+
+```shell script
+
+./mvnw flyway:migrate 
+```
+Run the Quarkus application with "dev" profile as below 
+
+```shell script
+
+./mvnw quarkus dev
+```
 
 
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
