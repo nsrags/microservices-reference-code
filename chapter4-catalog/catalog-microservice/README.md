@@ -53,10 +53,17 @@ You can then execute your native executable with: `./target/catalog-microservice
 
 If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
 
-## Provided Code
+### How to Run the application 
 
-### REST
+Run the Database Migration using Flyway (Make sure the required database already exists and database credentials are correct) 
 
-Easily start your REST Web Services
+```shell script
 
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+./mvnw flyway:migrate 
+```
+Run the Quarkus application with "dev" profile as below 
+
+```shell script
+
+./mvnw quarkus dev
+```
