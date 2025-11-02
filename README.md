@@ -19,7 +19,7 @@ This repository contains code references to sample microservices application "Re
 - Download MAVEN and set MAVEN_HOME / M2_HOME in order to build the project
 - Make sure each project respective maven build definition pom.xml is modified according to your database settings
 - If you're going to run all the services together make sure the port conflict didn't occur
-  - > **_NOTE:_** change the port of respective microservice in its application.properties (use * *quarkus.http.port=<YOUR_PREFERRED_PORT>* *)
+  - > **_NOTE:_** change the port of respective microservice in its application.properties (use  *quarkus.http.port=<YOUR_PREFERRED_PORT>* )
 - Create the empty database in respective DB store
 - Run the database migration (using maven command - **mvn flyway:migrate**) as this step would ensure the basic tables and seed data are created as part of database
 - Run the application using command - **mvn quarkus:dev** ) to bring the services running
