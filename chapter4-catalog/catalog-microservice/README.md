@@ -35,6 +35,18 @@ If you want to build an _über-jar_, execute the following command:
 
 The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
 
+### Pre-requisties 
+- Java 21
+- NoSQL - MongoDB running as container or in your local (make sure you have the credentials in order to configure the application)
+- Maven build tool
+- Docker daemon running to build container images
+  
+
+### Setup 
+- Import the project to your favourite IDE
+- Since this project uses build tool Maven you can import it as Maven project. No special instructions
+- Once imported and dependencies are downloaded project should build successfully
+
 ## Creating a native executable
 
 You can create a native executable using:
@@ -53,10 +65,19 @@ You can then execute your native executable with: `./target/catalog-microservice
 
 If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
 
-## Provided Code
 
-### REST
 
-Easily start your REST Web Services
+### How to Run the application 
 
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+Run the Database Migration using Flyway (Make sure the required database already exists and database credentials are correct) 
+
+```shell script
+
+./mvnw flyway:migrate 
+```
+Run the Quarkus application with "dev" profile as below 
+
+```shell script
+
+./mvnw quarkus dev
+```
