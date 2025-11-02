@@ -23,7 +23,6 @@ public class InventoryController {
     @Path("{inventoryListId}/availability/{skuId}")
     public Response getAvailability(@PathParam("skuId") String skuId, @PathParam("inventoryListId") String inventoryListId){
         InventoryListItem inventoryItem = inventoryService.getAvailability(skuId,inventoryListId);
-        System.out.println("Inventory Item retrieved .."+inventoryItem);
         return  Response.ok(inventoryItem).build();
     }
 
