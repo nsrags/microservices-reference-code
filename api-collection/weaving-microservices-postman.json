@@ -1,0 +1,555 @@
+{
+  "info": {
+    "name": "weaving-microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "bruno",
+      "event": []
+    },
+    {
+      "name": "chapter7-cart",
+      "item": [
+        {
+          "name": "findCartByCartId",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{CART_HOST}}:{{CART_HOST_PORT}}/{{CART_CONTEXT_PATH}}/:cartId",
+              "protocol": "http",
+              "host": [
+                "{{CART_HOST}}:{{CART_HOST_PORT}}"
+              ],
+              "path": [
+                "{{CART_CONTEXT_PATH}}",
+                ":cartId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "getCartByCustomer",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{CART_HOST}}:{{CART_HOST_PORT}}/{{CART_CONTEXT_PATH}}/customer/:customerId",
+              "protocol": "http",
+              "host": [
+                "{{CART_HOST}}:{{CART_HOST_PORT}}"
+              ],
+              "path": [
+                "{{CART_CONTEXT_PATH}}",
+                "customer",
+                ":customerId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "343"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "CreateNewCartForCustomer",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{CART_HOST}}:{{CART_HOST_PORT}}/{{CART_CONTEXT_PATH}}/customer/:customerId",
+              "protocol": "http",
+              "host": [
+                "{{CART_HOST}}:{{CART_HOST_PORT}}"
+              ],
+              "path": [
+                "{{CART_CONTEXT_PATH}}",
+                "customer",
+                ":customerId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "343"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Items to Cart",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{CART_HOST}}:{{CART_HOST_PORT}}/{{CART_CONTEXT_PATH}}/:cartId/items",
+              "protocol": "http",
+              "host": [
+                "{{CART_HOST}}:{{CART_HOST_PORT}}"
+              ],
+              "path": [
+                "{{CART_CONTEXT_PATH}}",
+                ":cartId",
+                "items"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "4"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[{\n  \"quantity\":4,\n  \"skuId\":\"sku1100\",\n  \"productId\":\"prod1000\",\n  \"salePrice\":10.00,\n  \"listPrice\":12.00,\n  \"productName\":\"Men's Tie\"\n},\n {\n  \"quantity\":5,\n  \"skuId\":\"sku1101\",\n  \"productId\":\"prod1001\",\n  \"salePrice\":13.00,\n  \"listPrice\":15.00,\n  \"productName\":\"Men's Scarf\"\n},\n {\n  \"quantity\":6,\n  \"skuId\":\"sku1102\",\n  \"productId\":\"prod1002\",\n  \"salePrice\":15.00,\n  \"listPrice\":20.00,\n  \"productName\":\"Men's Scarf\"\n}\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "AddItemToCart",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{CART_HOST}}:{{CART_HOST_PORT}}/{{CART_CONTEXT_PATH}}/:cartId/item",
+              "protocol": "http",
+              "host": [
+                "{{CART_HOST}}:{{CART_HOST_PORT}}"
+              ],
+              "path": [
+                "{{CART_CONTEXT_PATH}}",
+                ":cartId",
+                "item"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "4"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\":4,\n  \"skuId\":\"sku1100\",\n  \"productId\":\"prod1000\",\n  \"salePrice\":10.00,\n  \"listPrice\":12.00,\n  \"productName\":\"Men's Tie\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Inventory-Service",
+          "item": [
+            {
+              "name": "Get Availability",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "auth": null,
+                "description": "",
+                "url": {
+                  "raw": "http://{{INVENTORY_HOST}}:{{INVENTORY_PORT}}/{{INVENTORY_CONTEXT}}/{{INVENTORY_LIST_ID}}/availability/{{SKU_ID}}",
+                  "protocol": "http",
+                  "host": [
+                    "{{INVENTORY_HOST}}:{{INVENTORY_PORT}}"
+                  ],
+                  "path": [
+                    "{{INVENTORY_CONTEXT}}",
+                    "{{INVENTORY_LIST_ID}}",
+                    "availability",
+                    "{{SKU_ID}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              }
+            },
+            {
+              "name": "GetAvailabilityByList-ALL Skus",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "auth": null,
+                "description": "",
+                "url": {
+                  "raw": "http://{{INVENTORY_HOST}}:{{INVENTORY_PORT}}/{{INVENTORY_CONTEXT}}/{{INVENTORY_LIST_ID}}/availability/skus",
+                  "protocol": "http",
+                  "host": [
+                    "{{INVENTORY_HOST}}:{{INVENTORY_PORT}}"
+                  ],
+                  "path": [
+                    "{{INVENTORY_CONTEXT}}",
+                    "{{INVENTORY_LIST_ID}}",
+                    "availability",
+                    "skus"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "chapter4-catalog",
+      "item": [
+        {
+          "name": "FindCategoryById",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{CATALOG_HOST}}:{{CATALOG_HOST_PORT}}/{{CATALOG_CONTEXT_PATH}}/category/:categoryId",
+              "protocol": "http",
+              "host": [
+                "{{CATALOG_HOST}}:{{CATALOG_HOST_PORT}}"
+              ],
+              "path": [
+                "{{CATALOG_CONTEXT_PATH}}",
+                "category",
+                ":categoryId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "categoryId",
+                  "value": "68e0f717e7c938ce21772078"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "FindProductsByCategory",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{CATALOG_HOST}}:{{CATALOG_HOST_PORT}}/{{CATALOG_CONTEXT_PATH}}/products/:parentCategory",
+              "protocol": "http",
+              "host": [
+                "{{CATALOG_HOST}}:{{CATALOG_HOST_PORT}}"
+              ],
+              "path": [
+                "{{CATALOG_CONTEXT_PATH}}",
+                "products",
+                ":parentCategory"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "parentCategory",
+                  "value": "cat10002"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "FindChildSkus",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{CATALOG_HOST}}:{{CART_HOST_PORT}}/{{CATALOG_CONTEXT_PATH}}/skus/:productId",
+              "protocol": "http",
+              "host": [
+                "{{CATALOG_HOST}}:{{CART_HOST_PORT}}"
+              ],
+              "path": [
+                "{{CATALOG_CONTEXT_PATH}}",
+                "skus",
+                ":productId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "68e0f719e7c938ce21772081"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GetActiveCategories",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{CATALOG_HOST}}:{{CATALOG_HOST_PORT}}/{{CATALOG_CONTEXT_PATH}}/categories/all",
+              "protocol": "http",
+              "host": [
+                "{{CATALOG_HOST}}:{{CATALOG_HOST_PORT}}"
+              ],
+              "path": [
+                "{{CATALOG_CONTEXT_PATH}}",
+                "categories",
+                "all"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "chapter8-order",
+      "item": [
+        {
+          "name": "GetOrderById",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{ORDER_HOST}}:{{ORDER_HOST_PORT}}/{{ORDER_CONTEXT_PATH}}/:orderId",
+              "protocol": "http",
+              "host": [
+                "{{ORDER_HOST}}:{{ORDER_HOST_PORT}}"
+              ],
+              "path": [
+                "{{ORDER_CONTEXT_PATH}}",
+                ":orderId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{ORDER_ID}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Cancel Order",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{ORDER_HOST}}:{{ORDER_HOST_PORT}}/{{ORDER_CONTEXT_PATH}}/cancel/:orderId",
+              "protocol": "http",
+              "host": [
+                "{{ORDER_HOST}}:{{ORDER_HOST_PORT}}"
+              ],
+              "path": [
+                "{{ORDER_CONTEXT_PATH}}",
+                "cancel",
+                ":orderId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{ORDER_ID}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Payment Instrument To Order",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{ORDER_HOST}}:{{ORDER_HOST_PORT}}/{{ORDER_CONTEXT_PATH}}/:orderId/payment-instruments",
+              "protocol": "http",
+              "host": [
+                "{{ORDER_HOST}}:{{ORDER_HOST_PORT}}"
+              ],
+              "path": [
+                "{{ORDER_CONTEXT_PATH}}",
+                ":orderId",
+                "payment-instruments"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{ORDER_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{ \n     \"amount\": 700,\n    \"expirationYear\": 1990,\n    \"paymentInstrumentType\":\"CREDIT_CARD\",\n    \"expirationMonth\": 7,\n    \"expirationYear\": 2007,\n    \"issueNumber\": \"i117\",\n    \"cardType\": \"Visa\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create Order",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{ORDER_HOST}}:{{ORDER_HOST_PORT}}/{{ORDER_CONTEXT_PATH}}/:cartId",
+              "protocol": "http",
+              "host": [
+                "{{ORDER_HOST}}:{{ORDER_HOST_PORT}}"
+              ],
+              "path": [
+                "{{ORDER_CONTEXT_PATH}}",
+                ":cartId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "CART_HOST",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "CART_HOST_PORT",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "CART_CONTEXT_PATH",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "INVENTORY_HOST",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "INVENTORY_PORT",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "INVENTORY_CONTEXT",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "INVENTORY_LIST_ID",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "SKU_ID",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "CATALOG_HOST",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "CATALOG_HOST_PORT",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "CATALOG_CONTEXT_PATH",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "ORDER_HOST",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "ORDER_HOST_PORT",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "ORDER_CONTEXT_PATH",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "ORDER_ID",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

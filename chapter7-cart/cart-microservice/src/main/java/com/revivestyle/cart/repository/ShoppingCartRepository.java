@@ -11,6 +11,7 @@ import jakarta.transaction.Transactional;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -141,7 +142,7 @@ public class ShoppingCartRepository {
                     Log.infof("ShoppingCartRepository:: findByCartId returns cart with Id '%s'",fetchedCart.getCartId());
                 }
             }
-            //TODO: Need to fetch the Line Items ..
+            fetchedCart.setLineItems(this.findLineItems(cartId));
         } catch (SQLException e) {
             e.printStackTrace(); // Handle the exception appropriately
         }
@@ -149,7 +150,28 @@ public class ShoppingCartRepository {
         return fetchedCart;
     }
 
-    public ShoppingCart findCartByCustomer(Long customerId){
+    public Set<CartLineItem> findLineItems(long cartId) {
+        Set<CartLineItem> lineItems = new HashSet<>();
+        String cartLineItemSQL = "SELECT * from cart_line_item_t where cart_id=?";
+        try (Connection connection = cartDatasource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(cartLineItemSQL)) {
+            preparedStatement.setLong(1, cartId); // Set the parameter for the placeholder
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    CartLineItem lineItem = new CartLineItem(resultSet.getLong("cart_line_item_id"),
+                            resultSet.getString("product_id") ,resultSet.getString("sku_id")
+                    ,resultSet.getString("product_n"),resultSet.getLong("qty"),
+                            resultSet.getDouble("sale_price"),resultSet.getDouble("list_price"));
+                lineItems.add(lineItem);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lineItems;
+    }
+
+        public ShoppingCart findCartByCustomer(Long customerId){
         ShoppingCart fetchedCart = null;
         String cartSQL = "SELECT * from cart_t where customer_id=?";
         try (Connection connection = cartDatasource.getConnection();
@@ -163,7 +185,7 @@ public class ShoppingCartRepository {
                     Log.infof("ShoppingCartRepository:: findCartByCustomer returns cart with Id '%s'",fetchedCart.getCartId());
                 }
             }
-            //TODO: Need to fetch the Line Items ..
+          fetchedCart.setLineItems(this.findLineItems(fetchedCart.getCartId()));
         } catch (SQLException e) {
             e.printStackTrace();
         }

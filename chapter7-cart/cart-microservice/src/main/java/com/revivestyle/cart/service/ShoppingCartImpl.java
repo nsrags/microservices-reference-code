@@ -24,6 +24,7 @@ public class ShoppingCartImpl implements  CartService{
     public ShoppingCart getCart(Long cartId) {
         Log.infof("ShoppingCartImpl:: CartId '%s' request received for getCart()",cartId);
         ShoppingCart cartRetrieved = shoppingCartRepository.findCartById(cartId);
+        //TODO: reprice before returning to the customer
         return cartRetrieved;
     }
     @Override
@@ -57,6 +58,7 @@ public class ShoppingCartImpl implements  CartService{
     public ShoppingCart getCartByCustomer(Long customerId) {
         Log.infof("ShoppingCartImpl:: CustomerId '%s' request received for getCartByCustomer()",customerId);
         ShoppingCart cartRetrieved = shoppingCartRepository.findCartByCustomer(customerId);
+        //TODO: reprice before returning to the customer
         return cartRetrieved;
     }
 

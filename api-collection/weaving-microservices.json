@@ -157,6 +157,58 @@
               "mode": "none"
             }
           }
+        },
+        {
+          "type": "folder",
+          "name": "Inventory-Service",
+          "items": [
+            {
+              "type": "http",
+              "name": "Get Availability",
+              "seq": 1,
+              "request": {
+                "url": "http://{{INVENTORY_HOST}}:{{INVENTORY_PORT}}/{{INVENTORY_CONTEXT}}/{{INVENTORY_LIST_ID}}/availability/{{SKU_ID}}",
+                "method": "GET",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "none",
+                  "formUrlEncoded": [],
+                  "multipartForm": []
+                },
+                "script": {},
+                "vars": {},
+                "assertions": [],
+                "tests": "",
+                "auth": {
+                  "mode": "none"
+                }
+              }
+            },
+            {
+              "type": "http",
+              "name": "GetAvailabilityByList-ALL Skus",
+              "seq": 2,
+              "request": {
+                "url": "http://{{INVENTORY_HOST}}:{{INVENTORY_PORT}}/{{INVENTORY_CONTEXT}}/{{INVENTORY_LIST_ID}}/availability/skus",
+                "method": "GET",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "none",
+                  "formUrlEncoded": [],
+                  "multipartForm": []
+                },
+                "script": {},
+                "vars": {},
+                "assertions": [],
+                "tests": "",
+                "auth": {
+                  "mode": "none"
+                }
+              }
+            }
+          ]
         }
       ]
     },
@@ -278,6 +330,133 @@
           }
         }
       ]
+    },
+    {
+      "type": "folder",
+      "name": "chapter8-order",
+      "items": [
+        {
+          "type": "http",
+          "name": "GetOrderById",
+          "seq": 1,
+          "request": {
+            "url": "http://{{ORDER_HOST}}:{{ORDER_HOST_PORT}}/{{ORDER_CONTEXT_PATH}}/:orderId",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "orderId",
+                "value": "{{ORDER_ID}}",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Cancel Order",
+          "seq": 2,
+          "request": {
+            "url": "http://{{ORDER_HOST}}:{{ORDER_HOST_PORT}}/{{ORDER_CONTEXT_PATH}}/cancel/:orderId",
+            "method": "POST",
+            "headers": [],
+            "params": [
+              {
+                "name": "orderId",
+                "value": "{{ORDER_ID}}",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Add Payment Instrument To Order",
+          "seq": 3,
+          "request": {
+            "url": "http://{{ORDER_HOST}}:{{ORDER_HOST_PORT}}/{{ORDER_CONTEXT_PATH}}/:orderId/payment-instruments",
+            "method": "POST",
+            "headers": [],
+            "params": [
+              {
+                "name": "orderId",
+                "value": "{{ORDER_ID}}",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{ \n     \"amount\": 700,\n    \"expirationYear\": 1990,\n    \"paymentInstrumentType\":\"CREDIT_CARD\",\n    \"expirationMonth\": 7,\n    \"expirationYear\": 2007,\n    \"issueNumber\": \"i117\",\n    \"cardType\": \"Visa\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Create Order",
+          "seq": 4,
+          "request": {
+            "url": "http://{{ORDER_HOST}}:{{ORDER_HOST_PORT}}/{{ORDER_CONTEXT_PATH}}/:cartId",
+            "method": "POST",
+            "headers": [],
+            "params": [
+              {
+                "name": "cartId",
+                "value": "2",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
     }
   ],
   "activeEnvironmentUid": "psjfszhmBxYMlrq8NJqRw",
@@ -322,6 +501,69 @@
         {
           "name": "CATALOG_CONTEXT_PATH",
           "value": "catalog",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "INVENTORY_CONTEXT",
+          "value": "inventory",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "INVENTORY_HOST",
+          "value": "localhost",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "INVENTORY_PORT",
+          "value": "8080",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "INVENTORY_LIST_ID",
+          "value": "1",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "SKU_ID",
+          "value": "Sku10001",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "ORDER_HOST",
+          "value": "localhost",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "ORDER_HOST_PORT",
+          "value": "9000",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "ORDER_CONTEXT_PATH",
+          "value": "order",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "ORDER_ID",
+          "value": "1",
           "enabled": true,
           "secret": false,
           "type": "text"
