@@ -1,0 +1,17 @@
+{
+  "name": "revive-style-ai-agent",
+  "version": "0.1.0",
+  "description": "AI-powered chat agent orchestrating the full customer journey for Revive Style sustainable fashion platform using LangGraph and microservices via MCP.",
+  "env": {
+    "OPENAI_API_KEY": {
+      "required": true
+    },
+    "LANGSMITH_API_KEY": {
+      "required": false
+    }
+  },
+  "graphs": {
+    "main": "./graph/graph.py:graph"
+  },
+  "requirements": "./requirements.txt"
+}

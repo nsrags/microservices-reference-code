@@ -1,0 +1,23 @@
+# Core LangGraph and state management
+langgraph>=0.2.0
+langgraph-checkpoint>=2.0.0
+langgraph-prebuilt>=0.1.0
+
+# LangChain core and OpenAI integration (for LLM calls and chat models)
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-openai>=0.2.0
+
+# MCP integration (for registering microservices as tools)
+langchain-mcp-adapters>=0.1.0
+mcp>=0.1.0  # Core MCP client/server library if needed separately
+fastapi>=0.100.0            # For running HTTP-based MCP servers
+uvicorn>=0.23.0             # Server runner
+
+# Environment and configuration
+python-dotenv>=1.0.0
+
+# Optional: Additional utilities
+requests>=2.31.0            # For making HTTP requests if needed   
+pydantic>=2.5.0             # For data validation and settings management
+streamlit>=1.30.0           # For building interactive web apps (if needed)
