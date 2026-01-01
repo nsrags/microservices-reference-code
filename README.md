@@ -12,6 +12,8 @@ This repository contains code references to sample microservices application "Re
   - Contains the microserivces code related to Order domain .This includes Order microservices (payment is embedded as part of Order itself) 
 - ## api-collection
   - Contains All the Bruno & Postman collections  that are required to test respective microservice .Make sure if any changes made to the application context-path,port,and host-nane needs to be updated in the respective collection variable
+- ## revive-style-ai-agent
+  - Contains code for building ai agent that leverages micro services built in other chapters
 
 ## Instructions - How to Setup 
 - All the projects are quarkus based java projects and tested on OpenJDK-21
