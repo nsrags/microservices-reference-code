@@ -75,4 +75,4 @@ async def add_to_cart(product_id: str, quantity: int = 1) -> dict:
 # === Run the server ===
 if __name__ == "__main__":
     print("Revive Style MCP Server started -> http://localhost:8000/mcp")
-    mcp.run(transport=settings.mcp_transport, host="localhost", port=8000)
+    mcp.run(transport=settings.mcp_transport)

@@ -37,7 +37,7 @@ async def chat_loop():
                     pass
             elif kind == "on_tool_start":
                 # Optional: show tool usage
-                print(f"\n[Using tool: {event['name']}]", flush=True)
+                # print(f"\n[Using tool: {event['name']}]", flush=True)
             elif kind == "on_chain_end":
                 pass
             else:
